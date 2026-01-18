@@ -1,4 +1,4 @@
-name: CI
+name: Build
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -8,16 +8,16 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Install
+      - name: deps
         run: |
           pip3 install --upgrade buildozer cython==0.29.33
           sudo apt-get install -y build-essential libffi-dev libssl-dev
-      - name: Build
+      - name: build
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           workdir: .
           buildozer_version: master
-      - name: Save
+      - name: upload
         uses: actions/upload-artifact@v3
         with:
           name: LegendaryCalc-APK
