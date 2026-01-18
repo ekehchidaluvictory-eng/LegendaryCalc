@@ -1,6 +1,5 @@
 name: CI
 on: [push, workflow_dispatch]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +17,7 @@ jobs:
         with:
           workdir: .
           buildozer_version: master
-      - name: Save APK
+      - name: Save
         uses: actions/upload-artifact@v3
         with:
           name: LegendaryCalc-APK
